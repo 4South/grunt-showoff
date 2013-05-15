@@ -5,6 +5,9 @@
 ## Getting Started
 This plugin requires Grunt `~0.4.0`
 
+Additionally, if you wish to use these handlebars files inside a project you will need to include one of the many .css files available for highlighting the outputted
+html from [highlight.js](http://highlightjs.org).
+
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
@@ -26,10 +29,14 @@ In your project's Gruntfile, add a section named `showoff` to the data object pa
 grunt.initConfig({
   showoff: {
     options: {
-      // Task-specific options go here.
+      lang: 'javascript',
     },
-    your_target: {
-      // Target-specific file lists and/or options go here.
+    glob_to_multiple: {
+      expand: true,
+      cwd: 'where/your/files/are',
+      src: ['**/*.js'],
+      dest: 'where/your/output/goes',
+      ext: '.handlebars',
     },
   },
 })
@@ -37,53 +44,12 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
-Type: `String`
-Default value: `',  '`
+####Options.lang
+Specify what language highlight.js will use to highlight your output.  For example, 'javascript'.  See highlight.js docs for exact names for each language.
 
-A string value that is used to do something with whatever.
-
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
-
-### Usage Examples
-
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
-
-```js
-grunt.initConfig({
-  showoff: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
-grunt.initConfig({
-  showoff: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+Please submit issues/pull requests to the github repository for this project.  Contributions are absolutely welcome!
 
 ## Release History
-_(Nothing yet)_
+May14, 2013 0.1.2
